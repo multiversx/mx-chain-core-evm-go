@@ -1,0 +1,17 @@
+// This file holds the data structures related with the functionality of an EVM transaction
+syntax = "proto3";
+
+package proto;
+
+option go_package = "transaction";
+option (gogoproto.stable_marshaler_all) = true;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "github.com/multiversx/mx-chain-core-sovereign-go/data/transaction/transaction.proto";
+
+message TransactionEVM {
+  Transaction Transaction  = 1 [(gogoproto.jsontag) = "transaction"];
+  bytes       RcvAliasAddr = 2 [(gogoproto.jsontag) = "rcvAliasAddr,omitempty"];
+  bytes       SndAliasAddr = 3 [(gogoproto.jsontag) = "sndAliasAddr,omitempty"];
+  bytes       OriginalData = 4 [(gogoproto.jsontag) = "originalData,omitempty"];
+}
